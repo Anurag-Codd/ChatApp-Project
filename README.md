@@ -24,5 +24,5 @@ This chat app provides **instant messaging, user authentication, and media shari
 | **Node.js & Express** | Backend API & WebSockets logic |
 | **MongoDB** | Database for storing messages & users |
 | **Socket.io** | Real-time bidirectional event-based communication |
-| **JFirebase** | Secure user authentication |
+| **Firebase** | Secure user authentication |
 | **Cloudinary** | Media file storage |
