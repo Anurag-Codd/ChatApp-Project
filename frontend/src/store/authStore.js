@@ -141,13 +141,20 @@ export const authStore = create((set, get) => ({
         userId: user._id,
       },
     });
-    newSocket.connect();
 
-    set({ socket: newSocket });
+    newSocket.on("connect", () => {
+      console.log("Socket connected");
+    });
+
+    newSocket.on("disconnect", () => {
+      console.log("Socket disconnected");
+    });
 
     newSocket.on("onlineUsers", (userIds) => {
       set({ onlineUsers: userIds });
     });
+
+    set({ socket: newSocket });
   },
 
   disconnectSocket: () => {

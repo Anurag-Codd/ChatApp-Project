@@ -28,4 +28,4 @@ dist/
 .env.test
 
 #firebase
-*.json
+adminService.json

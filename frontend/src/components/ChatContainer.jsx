@@ -27,11 +27,13 @@ function ChatContainer() {
 
 
   useEffect(() => {
-    fetchChats(selectedUser._id);
-    subscribeToMessage();
+    if (selectedUser) {
+      fetchChats(selectedUser._id);
+      subscribeToMessage();
+    }
 
     return () => unsubscribeToMessage();
-  }, [selectedUser._id, fetchChats, subscribeToMessage, unsubscribeToMessage]);
+  }, [selectedUser, fetchChats, subscribeToMessage, unsubscribeToMessage]);
 
   if (isLoading) {
     return (
