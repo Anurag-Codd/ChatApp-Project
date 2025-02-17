@@ -1,13 +1,28 @@
 {
-  "name": "chatapp-project",
+  "name": "backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "backend/src/index.js",
+  "type": "module",
   "scripts": {
-    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
-    "start": "node run start --prefix backend"
+    "dev": "nodemon backend/index.js",
+    "start": "cross-env NODE_ENV=production node backend/index.js",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "cloudinary": "^2.5.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "firebase-admin": "^13.0.2",
+    "mongoose": "^8.8.2",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^3.1.7"
+  }
 }
