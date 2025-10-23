@@ -1,5 +1,5 @@
 import chatStore from "../store/chatStore";
-import { formatMessageTime } from "../utilities/utils";
+import { formatMessageTime } from "../utilities/dateFormat";
 import ChatSkeleton from "./skeletons/ChatSkeleton";
 import { useEffect, useRef } from "react";
 import ChatHeader from "./ChatHeader";
@@ -75,12 +75,12 @@ function ChatContainer() {
                 {formatMessageTime(message.createdAt)}
               </time>
             </div>
-            <div className="chat-bubble flex flex-col">
+            <div className="chat-bubble flex flex-col p-1.5">
               {message.image && (
                 <img
                   src={message.image}
                   alt="Attachment"
-                  className="sm:max-w-[200px] rounded-md mb-2"
+                  className="sm:max-w-[200px] rounded-md"
                 />
               )}
               {message.text && <p>{message.text}</p>}

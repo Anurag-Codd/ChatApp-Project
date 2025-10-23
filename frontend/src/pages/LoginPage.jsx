@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { authStore } from "../store/authStore";
 import AuthImagePattern from "../components/AuthImagePattern";
 import { Loader2, Lock, Mail, MessageSquare } from "lucide-react";

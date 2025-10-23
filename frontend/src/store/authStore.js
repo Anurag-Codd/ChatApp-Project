@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import toast from "react-hot-toast";
 import { io } from "socket.io-client";
-import axiosInstance from "../utilities/axios";
+import axiosInstance from "../utilities/axiosInstance";
 import {
   auth,
   createUser,

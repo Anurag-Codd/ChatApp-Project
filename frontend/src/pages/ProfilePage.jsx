@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { authStore } from "../store/authStore";
-import { Camera, Mail, User, UserPen, Check } from "lucide-react";
+import { Camera, Mail, User, Pencil, Check ,X} from "lucide-react";
 
 function ProfilePage() {
   const { user, updateProfile, updateStatus, isLoading } = authStore();
   const [isEditing, setIsEditing] = useState(false);
   const [status, setStatus] = useState(user?.status);
   const [selectedImg, setSelectedImg] = useState(null);
-
-  console.log(user);
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -44,7 +42,7 @@ function ProfilePage() {
                 <img
                   src={selectedImg || user?.avatar || "/avatar.png"}
                   alt="Profile"
-                  className="w-32 h-32 rounded-lg object-cover border-2"
+                  className="w-32 h-32 rounded-lg object-cover"
                 />
                 <label
                   htmlFor="avatar-upload"
@@ -80,25 +78,32 @@ function ProfilePage() {
                     <textarea
                       type="text"
                       className="w-full h-full p-2 outline-none resize-none rounded-md"
-                      value={status}
+                      placeholder={status}
                       onChange={(e) => setStatus(e.target.value)}
                     />
                   ) : (
                     <p className="w-full h-full p-2">{user?.status}</p>
                   )}
                   {isEditing ? (
+                    <>
                     <button
-                      className="absolute bottom-0 right-0 bg-base-content hover:scale-105 text-white font-bold py-2 px-4 rounded-md transition-all duration-200"
+                      className="absolute bottom-0 right-10 bg-error hover:scale-105 text-white font-bold p-2 py-1 rounded-md transition-all duration-200"
+                      onClick={() => setIsEditing(false)}
+                    >
+                      <X  className="size-4" />
+                    </button>
+                    <button
+                      className="absolute bottom-0 right-0 bg-success hover:scale-105 text-white font-bold p-2 py-1 rounded-md transition-all duration-200"
                       onClick={handleEditStatus}
                     >
-                      <Check className="w-6 h-4" />
-                    </button>
+                      <Check className="size-4" />
+                    </button></>
                   ) : (
                     <button
-                      className="absolute bottom-0 right-0 bg-base-content hover:scale-105 text-white font-bold py-2 px-4 rounded-md transition-all duration-200"
+                      className="absolute bottom-0 right-0 bg-base-content hover:scale-105 text-white font-bold p-2 py-1 rounded-md transition-all duration-200"
                       onClick={() => setIsEditing(true)}
                     >
-                      <UserPen className="w-6 h-4" />
+                      <Pencil className="size-4" />
                     </button>
                   )}
                 </div>

@@ -1,18 +1,27 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer utilities {
-  .underline-effect {
-    @apply relative inline-block font-semibold;
-  }
+@plugin "daisyui" {
+  themes: all;
+}
 
-  .underline-effect::after {
+@utility underline-effect {
+  position: relative;
+  display: inline-block;
+  font-weight: 600;
+
+  &::after {
     content: "";
-    @apply absolute left-0 bottom-0 w-0 h-[3px] bg-primary transition-all duration-300 ease-in-out rounded-full;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 0;
+    background-color: var(--color-primary);
+    border-radius: 9999px;
+    transition: width 0.3s ease-in-out;
   }
 
-  .underline-effect:hover::after {
-    @apply w-full;
+  &:hover::after {
+    width: 100%;
   }
 }
